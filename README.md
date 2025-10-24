@@ -1,194 +1,175 @@
-# مشروع البحث عن معتقلي سجن صيدنايا
+# Sydnaya Prisoner Search Project
 
-مشروع تعاوني بين فريق المبرمجين وشركة الرفاعي للاستشارات ضمن مبادرة YASMEEN AI، يهدف إلى تطوير نظام بحث ذكي لتسهيل عملية البحث عن معتقلي سجن صيدنايا باستخدام تقنيات الذكاء الاصطناعي.
+## 📖 Table of Contents
+- [English Documentation](README.md)
+- [التوثيق باللغة العربية](README_AR.md)
+- [Project Overview](#project-overview)
+- [Company Partnership](#company-partnership) 
+- [Team](#team)
+- [Project Structure](#project-structure)
+- [Installation](#installation)
+- [Development](#development)
+- [License & Copyright](#license--copyright)
 
-## 📋 وصف المشروع
+## 🔍 Project Overview
 
-نظام ويب يستخدم نموذج ذكاء اصطناعي للبحث السريع في قاعدة بيانات صور المعتقلين، حيث يقوم بإيجاد أقرب تشابه بين الصورة المدخلة والصور الموجودة في قاعدة البيانات.
+A collaborative web-based AI search system to facilitate locating detainees from Sednaya Prison through facial similarity matching. The platform uses advanced computer vision models to restore facial features and find closest matches in the database.
 
-## 🏗️ بنية المشروع المقترحة
+**Key Features:**
+- AI-powered facial restoration and enhancement
+- Rapid similarity search across detainee database
+- User-friendly web interface
+- Secure and ethical data handling
+
+## 🤝 Company Partnership
+
+### Al-Rifai Consulting Company
+
+**Strategic Technology Partner**
+
+Al-Rifai Consulting Company brings extensive expertise in AI solutions and humanitarian technology projects to this initiative. As our consulting partner under the YASMEEN AI initiative, they provide:
+
+- **Technical Guidance**: AI model architecture and optimization
+- **Ethical Oversight**: Ensuring responsible AI deployment
+- **Project Management**: Agile development methodologies
+- **Quality Assurance**: Maintaining highest standards in humanitarian tech
+
+**Partnership Vision:**
+"Leveraging cutting-edge technology to serve humanitarian causes, combining technical excellence with social responsibility to create meaningful impact."
+
+*For more information about Al-Rifai Consulting Group, visit [www.website.com](http://www.website.com)*
+
+## 👥 Team
+
+### Development Team Structure
+
+**Core Development Team:**
+- **Project Lead**: XXX
+- **AI Research Lead**: XXX
+- **Full-stack Development**: XXX
+- **Data Engineering**: XXX
+
+**Specialized Units:**
+
+1. **Data Collection & Processing Team**
+   - Responsible for ethical data gathering and image preprocessing
+   - Implements data augmentation and quality control
+
+2. **AI Model Development Team** 
+   - Face restoration model training and optimization
+   - Similarity search algorithm development
+   - Model performance evaluation
+
+3. **Web Platform Team**
+   - Frontend interface design and development
+   - Backend API and database architecture
+   - Deployment and DevOps
+
+## 🏗️ Project Structure
 
 ```
 sydnaya-search-project/
 │
-├── 📁 data/                    # بيانات المشروع
-│   ├── 📁 raw/                 # الصور الأصلية المجمعة
-│   ├── 📁 processed/           # الصور بعد المعالجة
-│   ├── 📁 augmented/           # الصور بعد التكبير
-│   └── 📄 metadata.csv         # معلومات عن الصور والمعتقلين
+├── 📁 data/
+│   ├── 📁 raw/                 # Original collected images
+│   ├── 📁 processed/           # Processed and enhanced images
+│   ├── 📁 augmented/           # Data augmentation outputs
+│   └── 📄 metadata.csv         # Detainee information database
 │
-├── 📁 models/                  # نماذج الذكاء الاصطناعي
-│   ├── 📁 face_restoration/    # نموذج ترميم الوجوه
-│   ├── 📁 similarity_search/   # نموذج البحث عن التشابه
-│   ├── 📁 training_scripts/    # سكريبتات التدريب
-│   └── 📁 weights/             # الأوزان المحفوظة
+├── 📁 models/
+│   ├── 📁 face_restoration/    # Facial restoration models
+│   ├── 📁 similarity_search/   # Similarity matching models
+│   ├── 📁 training_scripts/    # Model training pipelines
+│   └── 📁 weights/             # Pre-trained model weights
 │
-├── 📁 web_app/                 # تطبيق الويب
-│   ├── 📁 frontend/            # واجهة المستخدم
-│   │   ├── 📁 src/
-│   │   ├── 📁 public/
-│   │   └── 📄 package.json
-│   ├── 📁 backend/             # الخادم والواجهة البرمجية
-│   │   ├── 📁 api/
-│   │   ├── 📁 database/
-│   │   └── 📄 app.py
-│   └── 📁 deployment/          # إعدادات النشر
+├── 📁 web_app/
+│   ├── 📁 frontend/            # React/Vue.js application
+│   ├── 📁 backend/             # FastAPI/Flask server
+│   └── 📁 deployment/          # Docker & cloud configuration
 │
-├── 📁 scripts/                 # سكريبتات المساعدة
-│   ├── 📁 data_collection/     # جمع البيانات
-│   ├── 📁 data_processing/     # معالجة البيانات
-│   └── 📁 utils/               # أدوات مساعدة
-│
-├── 📁 docs/                    # التوثيق
-│   ├── 📁 api/                 # توثيق الواجهة البرمجية
-│   └── 📁 user_guide/          # دليل المستخدم
-│
-├── 📁 tests/                   # الاختبارات
-│   ├── 📁 unit/                # اختبارات الوحدات
-│   ├── 📁 integration/         # اختبارات التكامل
-│   └── 📁 performance/         # اختبارات الأداء
-│
-├── 📄 requirements.txt         # متطلبات المشروع
-├── 📄 environment.yml          # بيئة التطوير
-├── 📄 docker-compose.yml       # تكوين Docker
-├── 📄 .gitignore               # الملفات المستثناة من Git
-└── 📄 README.md                # هذا الملف
+├── 📁 scripts/                 # Utility scripts
+├── 📁 docs/                    # Project documentation
+└── 📁 tests/                   # Test suites
 ```
 
-## 👥 تقسيم الفرق والعمل
+## 🚀 Installation
 
-### 1. فريق جمع البيانات والمعالجة
-**المسؤوليات:**
-- جمع صور المعتقلين من الإنترنت
-- معالجة الصور وتنظيفها
-- زيادة البيانات (Data Augmentation)
-- تنظيم قاعدة البيانات
-
-**الملفات ذات الصلة:**
-```
-data/
-scripts/data_collection/
-scripts/data_processing/
-```
-
-### 2. فريق تدريب النماذج
-**المسؤوليات:**
-- تطوير نموذج ترميم الوجوه
-- تدريب نموذج البحث عن التشابه
-- تحسين أداء النماذج
-- تقييم النتائج
-
-**الملفات ذات الصلة:**
-```
-models/
-scripts/utils/
-```
-
-### 3. فريق تطوير الويب
-**المسؤوليات:**
-- تصميم واجهة المستخدم
-- تطوير واجهة برمجية للبحث
-- تكامل النماذج مع التطبيق
-- نشر النظام
-
-**الملفات ذات الصلة:**
-```
-web_app/
-deployment/
-```
-
-## 🚀 بدء الاستخدام
-
-### المتطلبات الأساسية
+### Prerequisites
 - Python 3.8+
 - Node.js 14+
 - Git
 
-### التثبيت
-
-1. استنساخ المستودع:
+### Quick Start
 ```bash
-git clone https://github.com/AhmedGDeeb/sydnaya-search-project.git
+# Clone repository
+git clone https://github.com/your-org/sydnaya-search-project.git
 cd sydnaya-search-project
-```
 
-2. إعداد بيئة Python:
-```bash
+# Setup environment
 conda env create -f environment.yml
 conda activate sydnaya-ai
-```
 
-3. تثبيت متطلبات Python:
-```bash
+# Install dependencies
 pip install -r requirements.txt
+cd web_app/frontend && npm install
 ```
 
-4. إعداد تطبيق الويب:
-```bash
-cd web_app/frontend
-npm install
-```
+## 🛠️ Development
 
-## 🛠️ دليل التطوير
-
-### لفريق جمع البيانات:
+### For Data Team:
 ```bash
-# تشغيل سكريبت جمع البيانات
 python scripts/data_collection/scraper.py
-
-# معالجة الصور
 python scripts/data_processing/image_processor.py
 ```
 
-### لفريق النماذج:
+### For AI Team:
 ```bash
-# تدريب نموذج ترميم الوجوه
 python models/training_scripts/train_restoration.py
-
-# تدريب نموذج التشابه
 python models/training_scripts/train_similarity.py
 ```
 
-### لفريق الويب:
+### For Web Team:
 ```bash
-# تشغيل الخادم الخلفي
-cd web_app/backend
-python app.py
+# Backend
+cd web_app/backend && python app.py
 
-# تشغيل واجهة المستخدم
-cd web_app/frontend
-npm start
+# Frontend  
+cd web_app/frontend && npm start
 ```
 
-## 📊 قاعدة البيانات
+## 📄 License & Copyright
 
-يتم تخزين المعلومات في ملف CSV مع الهيكل التالي:
-```csv
-id,name,original_image_path,processed_image_path,metadata,source,date_added
-```
+### Intellectual Property
+**Copyright © 2024 Al-Rifai Consulting Company & Development Team**
 
-## 🔍 استخدام النظام
+### License Agreement
+This project is licensed under the **Apache 2.0**
 
-1. رفع صورة للبحث
-2. معالجة الصورة تلقائياً
-3. البحث في قاعدة البيانات
-4. عرض النتائج المرتبة حسب التشابه
+**Key Provisions:**
+- **Usage**: Free for humanitarian and human rights organizations
+- **Modification**: Allowed with proper attribution
+- **Distribution**: Permitted for non-commercial purposes
+- **Commercial Use**: Requires written permission from copyright holders
+- **Attribution**: Must credit original developers and Al-Rifai Consulting
 
-## 🤝 المساهمة في المشروع
+### Ethical Usage Guidelines
+1. **Humanitarian Focus**: Use exclusively for human rights and humanitarian purposes
+2. **Data Privacy**: Implement strict data protection measures
+3. **Non-commercial**: No commercial exploitation of the technology
+4. **Transparency**: Clear documentation of capabilities and limitations
+5. **Accountability**: Regular ethical reviews and impact assessments
 
-1. انشاء فرع جديد (Branch)
-2. إجراء التغييرات
-3. رفع طلب دمج (Pull Request)
-4. مراجعة الكود من قبل الفريق
+### Copyright Holders
+- **Al-Rifai Consulting Company**: Architecture, AI models, project methodology
+- **Development Team**: Implementation, codebase, documentation
+- **YASMEEN AI Initiative**: Framework and oversight
 
-## 📄 الترخيص
-
-هذا المشروع مرخص تحت [رخصة المشروع - يحدد لاحقاً]
-
-## 📞 الاتصال
-
-للاستفسارات التقنية أو المشاركة في المشروع، يرجى التواصل مع فريق التطوير.
+**For licensing inquiries:** contact@alrifai-consulting.com
 
 ---
 
-**ملاحظة:** هذا المشروع ذو طبيعة إنسانية ويحتاج إلى أعلى معايير الدقة والاحترام في التعامل مع البيانات.
+*This project represents our commitment to using technology for humanitarian causes and upholding human rights through innovation.*
+
+---
+
+[← Back to Arabic Documentation](README_AR.md)
