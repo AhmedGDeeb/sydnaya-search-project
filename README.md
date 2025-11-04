@@ -47,7 +47,7 @@ Al-Rifai Consulting Company brings extensive expertise in AI solutions and human
 - **Project Lead**: XXX
 - **AI Research Lead**: XXX
 - **Full-stack Development**: XXX
-- **Data Engineering**: XXX
+- **Data Engineering**: [Ahmad Deeb](https://github.com/AhmedGDeeb), 
 
 **Specialized Units:**
 
